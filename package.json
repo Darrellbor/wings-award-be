@@ -1,0 +1,27 @@
+{
+  "name": "wings-award-be",
+  "version": "1.0.0",
+  "description": "This is the backend api for the wings award platform 2020 set",
+  "main": "api.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Darrellbor/wings-award-be.git"
+  },
+  "keywords": [
+    "wings",
+    "award",
+    "2020",
+    "covenant",
+    "university",
+    "set"
+  ],
+  "author": "Darrel Idiagbor",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Darrellbor/wings-award-be/issues"
+  },
+  "homepage": "https://github.com/Darrellbor/wings-award-be#readme"
+}

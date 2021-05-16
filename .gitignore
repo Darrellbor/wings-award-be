@@ -1,0 +1,16 @@
+# node artifact files
+node_modules/
+dist/
+build/
+id_rsa_priv.pem
+id_rsa_pub.pem
+
+#environment variable
+.env
+
+# Log files
+/logs
+*.log
+
+# coverage
+/coverage

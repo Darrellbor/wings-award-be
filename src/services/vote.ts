@@ -14,6 +14,7 @@ interface confirmedVotesInterface extends voteItem {
   };
   nominee: {
     _id: Types.ObjectId;
+    category: Types.ObjectId;
     name: string;
     image: string;
   };
@@ -47,12 +48,13 @@ class Vote {
 
     if (votes.length < 0) throw new NotFoundError(`There are no votes available to analyse`);
 
-    const confirmedVotes: confirmedVotesInterface[] = [];
+    let confirmedVotes: confirmedVotesInterface[] = [];
     const voteAnalyzed = [];
 
     for (let i = 0; i < votes?.length; i++) {
       const vote = votes[i];
       if (vote.confirmed) {
+        confirmedVotes = [...confirmedVotes, ...(vote.votes as confirmedVotesInterface[])];
         confirmedVotes.concat(vote.votes as confirmedVotesInterface[]);
       }
     }
@@ -63,7 +65,7 @@ class Vote {
 
       for (let j = 0; j < confirmedVotes.length; j++) {
         const confirmedVote = confirmedVotes[j];
-        if (category._id === confirmedVote.category._id) {
+        if (category.name === confirmedVote.category.name) {
           voteByPerson[confirmedVote.nominee.name]
             ? <number>voteByPerson[confirmedVote.nominee.name] + 1
             : (voteByPerson[confirmedVote.nominee.name] = 1);

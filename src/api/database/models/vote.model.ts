@@ -1,7 +1,7 @@
 import { modelOptions, prop, Ref, getModelForClass } from '@typegoose/typegoose';
 import { Base } from '@typegoose/typegoose/lib/defaultClasses';
 import { ICategory } from './category.model';
-import INominee from './nominee.model';
+import { INominee } from './nominee.model';
 
 export class voteItem extends Base {
   @prop({ ref: ICategory, required: true })

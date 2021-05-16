@@ -22,7 +22,7 @@ class VoteRepo {
     voteId: Types.ObjectId,
     update: { confirmed: boolean }
   ): Promise<IVote | null> {
-    return await Vote.findByIdAndUpdate(voteId, update);
+    return await Vote.findOneAndUpdate({ _id: voteId }, update);
   }
 }
 

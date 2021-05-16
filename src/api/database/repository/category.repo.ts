@@ -1,6 +1,6 @@
 import { Types } from 'mongoose';
 import { Category, ICategory } from '../models/category.model';
-import INominee from '../models/nominee.model';
+import { INominee, Nominee } from '../models/nominee.model';
 
 class CategoryRepo {
   public static async create(category: ICategory): Promise<ICategory> {
@@ -10,8 +10,15 @@ class CategoryRepo {
   public static async createNominees(
     categoryId: Types.ObjectId,
     nominees: INominee[]
-  ): Promise<ICategory | null> {
-    return await Category.findByIdAndUpdate(categoryId, { Nominees: nominees });
+  ): Promise<INominee[] | null> {
+    const createdNominees: INominee[] = [];
+
+    for (let i = 0; i < nominees.length; i++) {
+      const nominee = nominees[i];
+      createdNominees.push(await Nominee.create({ ...nominee, category: categoryId }));
+    }
+
+    return createdNominees;
   }
 
   public static async findUnique(categoryId: Types.ObjectId): Promise<ICategory | null> {
@@ -19,7 +26,11 @@ class CategoryRepo {
   }
 
   public static async findAll(): Promise<ICategory[] | null> {
-    return await Category.find();
+    return await Category.find().lean();
+  }
+
+  public static async findNominees(categoryId: Types.ObjectId): Promise<INominee[] | null> {
+    return await Nominee.find({ category: categoryId });
   }
 }
 

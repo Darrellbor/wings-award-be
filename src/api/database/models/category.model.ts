@@ -12,7 +12,7 @@ class ICategory extends Base {
   public description!: string;
 
   @prop({ type: () => [INominee] })
-  public Nominees!: INominee[];
+  public Nominees?: INominee[];
 }
 
 const Category = getModelForClass(ICategory);

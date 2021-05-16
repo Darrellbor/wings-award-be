@@ -3,7 +3,7 @@ import { Base } from '@typegoose/typegoose/lib/defaultClasses';
 import { ICategory } from './category.model';
 import INominee from './nominee.model';
 
-class voteItem extends Base {
+export class voteItem extends Base {
   @prop({ ref: ICategory, required: true })
   public category!: Ref<ICategory>;
 

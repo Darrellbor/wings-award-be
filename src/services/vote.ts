@@ -5,6 +5,7 @@ import { ICategory } from 'api/database/models/category.model';
 import VoteRepo from '../api/database/repository/vote.repo';
 import CategoryRepo from '../api/database/repository/category.repo';
 import { NotFoundError } from '../core/ApiError';
+import { confirmationEmail } from '../templates/confirmation';
 
 interface confirmedVotesInterface extends voteItem {
   category: {
@@ -26,6 +27,7 @@ interface VoteAnalyzedInterface {
 
 class Vote {
   public static async Create(vote: IVote): Promise<IVote> {
+    await confirmationEmail(vote.email);
     return await VoteRepo.create({ ...vote, signature: uniqid('SIG_') });
   }
 

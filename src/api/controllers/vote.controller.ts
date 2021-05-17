@@ -4,7 +4,7 @@ import { validationResult } from 'express-validator';
 
 import asyncHandler from '../../helpers/asyncHandler';
 import VoteService from '../../services/vote';
-import { BadRequestDataError, BadRequestError } from '../../core/ApiError';
+import { BadRequestDataError, BadRequestError, NotFoundError } from '../../core/ApiError';
 import { SuccessResponse } from '../../core/ApiResponse';
 
 export const createCtrl = asyncHandler(async (req: Request, res: Response): Promise<Response> => {
@@ -16,6 +16,23 @@ export const createCtrl = asyncHandler(async (req: Request, res: Response): Prom
 
   return new SuccessResponse('Vote Successfully Casted!', vote).send(res);
 });
+
+export const findOneVoteCtrl = asyncHandler(
+  async (req: Request, res: Response): Promise<Response> => {
+    const email = req.params.email;
+    const signature = req.params.signature;
+
+    //error handling
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) throw new BadRequestDataError('Validation Failed', errors);
+
+    const vote = await VoteService.findOneVote({ email, signature });
+
+    if (!vote) throw new NotFoundError(`Vote with email ${email} could not be confirmed!`);
+
+    return new SuccessResponse('Vote Successfully Retrieved!', vote).send(res);
+  }
+);
 
 export const fetchVotesCtrl = asyncHandler(
   async (req: Request, res: Response): Promise<Response> => {

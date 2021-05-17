@@ -31,6 +31,13 @@ class Vote {
     return await VoteRepo.create({ ...vote, signature: uniqid('SIG_') });
   }
 
+  public static async findOneVote(params: {
+    email: string;
+    signature: string;
+  }): Promise<IVote | null> {
+    return await VoteRepo.findOne(params);
+  }
+
   public static async fetchAllVotes(): Promise<IVote[] | null> {
     return await VoteRepo.findAll();
   }

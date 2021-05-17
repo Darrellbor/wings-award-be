@@ -15,7 +15,8 @@ export const createValidator = [
       if (vote) return Promise.reject(`${value} has already voted before!`);
     })
     .normalizeEmail(),
-  body('votes').notEmpty().withMessage('Votes cannot be empty'),
+  body('votes.*.category').notEmpty().withMessage('Votes category cannot be empty'),
+  body('votes.*.nominee').notEmpty().withMessage('Votes nominee cannot be empty'),
 ];
 
 export const updateVoteValidator = [

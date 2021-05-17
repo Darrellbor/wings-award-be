@@ -26,7 +26,7 @@ export const confirmationEmail = async (email: string): Promise<void> => {
                     You recently used this email to vote on the wings award 2020 platform
                 </div>
         
-                <button class="Mailer__btn" style="background-color: #490a49;width: 100%;border-radius: 8px;color: #fff;padding: 20px;text-align: center;margin: auto;margin-top: 30px;margin-left: 30px;outline: none;font-size: 18px;font-weight: bold;max-width: 500px;cursor: pointer;border: none;">Confirm Your Votes</button>
+                <button class="Mailer__btn" style="background-color: #490a49;width: 100%;border-radius: 8px;color: #fff;padding: 20px;text-align: center;margin: auto;margin-top: 30px;margin-left: 30px;outline: none;font-size: 18px;font-weight: bold;max-width: 500px;cursor: pointer;border: none;" onclick="window.location='https://wings-award.netlify.app/';">Confirm Your Votes</button>
         
                 <div class="Mailer__need-help" style="font-weight: bold;margin-left: 26px;font-size: 14px;margin-top: 16px;">
                     Questions? Email us at

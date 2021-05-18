@@ -1,6 +1,7 @@
 import Logger from '../core/Logger';
 import Nodemailer from '../config/nodemailer';
 import { Types } from 'mongoose';
+import { serverUrl } from 'config';
 const { transporter, helperOptions } = Nodemailer;
 
 export const confirmationEmail = async (
@@ -31,7 +32,7 @@ export const confirmationEmail = async (
                     You recently used this email to vote on the wings award 2020 platform
                 </div>
         
-                <button class="Mailer__btn" style="background-color: #490a49;width: 100%;border-radius: 8px;color: #fff;padding: 20px;text-align: center;margin: auto;margin-top: 30px;margin-left: 30px;outline: none;font-size: 18px;font-weight: bold;max-width: 500px;cursor: pointer;border: none;" onclick="window.location='https://wings-award.netlify.app/confirmation/${email}/${signature}/${voteId}';">Confirm Your Votes</button>
+                <button class="Mailer__btn" style="background-color: #490a49;width: 100%;border-radius: 8px;color: #fff;padding: 20px;text-align: center;margin: auto;margin-top: 30px;margin-left: 30px;outline: none;font-size: 18px;font-weight: bold;max-width: 500px;cursor: pointer;border: none;" onclick="window.location='${serverUrl}confirmation/${email}/${signature}/${voteId}';">Confirm Your Votes</button>
         
                 <div class="Mailer__need-help" style="font-weight: bold;margin-left: 26px;font-size: 14px;margin-top: 16px;">
                     Questions? Email us at

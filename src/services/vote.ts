@@ -22,7 +22,8 @@ interface confirmedVotesInterface extends voteItem {
 }
 
 interface VoteAnalyzedInterface {
-  [key: string]: number | string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
 }
 
 class Vote {
@@ -78,7 +79,7 @@ class Vote {
         const confirmedVote = confirmedVotes[j];
         if (category.name === confirmedVote.category.name) {
           voteByPerson[confirmedVote.nominee.name]
-            ? <number>voteByPerson[confirmedVote.nominee.name] + 1
+            ? voteByPerson[confirmedVote.nominee.name]++
             : (voteByPerson[confirmedVote.nominee.name] = 1);
         }
       }

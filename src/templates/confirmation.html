@@ -61,7 +61,10 @@
   <body>
     <div class="Mailer">
       <div class="Mailer__logo">
-        <img src="https://lh3.googleusercontent.com/U0muk-tcN3wGnL31Q-tbWTiaIKswUvr5dP03hAFZfiArTLKKKWL-ElVCs4TqR6-obWPKQG2vv_WAn5rTrCX6FPBjGPFaZffvUEMYRGcxEOqB9nsYFhCAgHX0aN-nygXl-Fec6t9dZY11hrNGU3oCHqd4t8PVc7JbNCuzNdEGFANVuiL8gdvngG5Tt3OS5aTVQOmJIv8D-gvrNK9Xq9ICZhIlaxR0v2WudktDHHXRa8Kc7PXFa63o-8nAT1sm28z4cz0fNwAGBAqgWkdhROzVkK46-WwIgIh4RU6juZy9Oi6quAh6mv6mqglZZ57pBX40D3e3mtC6fugQFCiRSHWo71ku1RakPkycp_DPHpXS3QDux4J32rQKcq-sQICFiKGNSrXy0DJDK2J4grdyXXma6zT-w6FHKN732u364tUbBc0WuI74rZM5RGvrWCsiqVxlY7hMDNawu7RdkgBBb4eAL6Y2A_avYkk9OVzaa5xIILofq7hGkLq4fb37TxkCbYOvVaASEMFqbzJa-EujXK5o5YSlyfWnHJ71lHFXxUi4BHIkL1kq1Sw9dJ7da2uQ5aMdPhRG5_ecsPyKYgl8JA5VmuLs8CRClYRlCR4Le-9H2kg7sHf6ladDTYe3GQw-Wmagnys1vy7o_qcfRKDjLSMZhqFYHpGZHsaARPFKsYcEQDQ1cs5TaL8HbBr7_tj9gaMBoxmRawRFu_uXlYfGlPWlrJAZ=w154-h54-no?authuser=0" alt="logo" />
+        <img
+          src="https://lh3.googleusercontent.com/U0muk-tcN3wGnL31Q-tbWTiaIKswUvr5dP03hAFZfiArTLKKKWL-ElVCs4TqR6-obWPKQG2vv_WAn5rTrCX6FPBjGPFaZffvUEMYRGcxEOqB9nsYFhCAgHX0aN-nygXl-Fec6t9dZY11hrNGU3oCHqd4t8PVc7JbNCuzNdEGFANVuiL8gdvngG5Tt3OS5aTVQOmJIv8D-gvrNK9Xq9ICZhIlaxR0v2WudktDHHXRa8Kc7PXFa63o-8nAT1sm28z4cz0fNwAGBAqgWkdhROzVkK46-WwIgIh4RU6juZy9Oi6quAh6mv6mqglZZ57pBX40D3e3mtC6fugQFCiRSHWo71ku1RakPkycp_DPHpXS3QDux4J32rQKcq-sQICFiKGNSrXy0DJDK2J4grdyXXma6zT-w6FHKN732u364tUbBc0WuI74rZM5RGvrWCsiqVxlY7hMDNawu7RdkgBBb4eAL6Y2A_avYkk9OVzaa5xIILofq7hGkLq4fb37TxkCbYOvVaASEMFqbzJa-EujXK5o5YSlyfWnHJ71lHFXxUi4BHIkL1kq1Sw9dJ7da2uQ5aMdPhRG5_ecsPyKYgl8JA5VmuLs8CRClYRlCR4Le-9H2kg7sHf6ladDTYe3GQw-Wmagnys1vy7o_qcfRKDjLSMZhqFYHpGZHsaARPFKsYcEQDQ1cs5TaL8HbBr7_tj9gaMBoxmRawRFu_uXlYfGlPWlrJAZ=w154-h54-no?authuser=0"
+          alt="logo"
+        />
       </div>
 
       <div class="Mailer__header">Confirm Your Votes</div>
@@ -71,7 +74,9 @@
         You recently used this email to vote on the wings award 2020 platform
       </div>
 
-      <button class="Mailer__btn" onclick="window.location='https://wings-award.netlify.app/';">Confirm Your Votes</button>
+      <a href="https://wings-award.netlify.app/confirmation/${email}/${signature}/${voteId}"
+        ><button class="Mailer__btn">Confirm Your Votes</button></a
+      >
 
       <div class="Mailer__need-help">
         Questions? Email us at
@@ -80,6 +85,3 @@
     </div>
   </body>
 </html>
-
-
-

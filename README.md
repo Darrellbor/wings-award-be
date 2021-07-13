@@ -1,7 +1,7 @@
 # Wings Award Application For 2020 Set
 
 ## Live Link And Postman
-- Live link here [Live Wings Award Backend Link](https://wings-award.netlify.app/)
+- Live link here [Live Wings Award Backend Link](https://wings-award.herokuapp.com/)
 - Postman Collection [Wings Award Backend Postman](https://documenter.getpostman.com/view/1425723/TVzXBaeT)
 
 ## How To Run

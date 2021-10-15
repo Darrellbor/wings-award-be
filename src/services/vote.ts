@@ -51,7 +51,7 @@ class Vote {
   ): Promise<IVote | null> {
     const vote = await VoteRepo.findUnique(voteId);
     if (!vote) throw new NotFoundError(`Vote with id ${voteId} not found!`);
-    return await VoteRepo.updateUnique(voteId, update);
+    return await VoteRepo.updateUnique(voteId, { confirmed: update.confirmed });
   }
 
   public static async voteAnalysis(): Promise<VoteAnalyzedInterface[]> {

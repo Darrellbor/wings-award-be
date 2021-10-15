@@ -77,7 +77,7 @@ class Vote {
 
       for (let j = 0; j < confirmedVotes.length; j++) {
         const confirmedVote = confirmedVotes[j];
-        if (category.name === confirmedVote.category.name) {
+        if (confirmedVote.category && category.name === confirmedVote.category.name) {
           voteByPerson[confirmedVote.nominee.name]
             ? voteByPerson[confirmedVote.nominee.name]++
             : (voteByPerson[confirmedVote.nominee.name] = 1);

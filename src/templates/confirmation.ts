@@ -28,7 +28,7 @@ export const confirmationEmail = async (
         
                 <div class="Mailer__content" style="margin-top: 30px;margin-left: 26px;line-height: 1.8rem;letter-spacing: 0.4px;">
                     Hello there,<br>
-                    You recently used this email to vote on the wings award 2020 platform
+                    You recently used this email to vote on the wings award 2022 platform
                 </div>
         
                 <a href="https://wings-award.netlify.app/confirmation/${email}/${signature}/${voteId}"><button class="Mailer__btn" style="background-color: #490a49;width: 100%;border-radius: 8px;color: #fff;padding: 20px;text-align: center;margin: auto;margin-top: 30px;margin-left: 30px;outline: none;font-size: 18px;font-weight: bold;max-width: 500px;cursor: pointer;border: none;">Confirm Your Votes</button></a>

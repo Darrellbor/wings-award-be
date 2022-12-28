@@ -32,7 +32,6 @@ class Vote {
     const castedVote = await VoteRepo.create({ ...vote, signature });
     await confirmationEmail(vote.email, signature, castedVote._id);
     return {
-      _id: castedVote._id,
       email: castedVote.email,
       confirmed: castedVote.confirmed,
     };

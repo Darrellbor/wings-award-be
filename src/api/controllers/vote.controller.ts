@@ -5,7 +5,7 @@ import { validationResult } from 'express-validator';
 import asyncHandler from '../../helpers/asyncHandler';
 import VoteService from '../../services/vote';
 import { BadRequestDataError, BadRequestError, NotFoundError } from '../../core/ApiError';
-import { SuccessResponse } from '../../core/ApiResponse';
+import { SuccessMsgResponse, SuccessResponse } from '../../core/ApiResponse';
 
 export const createCtrl = asyncHandler(async (req: Request, res: Response): Promise<Response> => {
   //error handling
@@ -71,5 +71,17 @@ export const voteAnalysisCtrl = asyncHandler(
     const votes = await VoteService.voteAnalysis();
 
     return new SuccessResponse('Votes Analysis Retrieved!', votes).send(res);
+  }
+);
+
+export const remindUnconfirmedVotesCtrl = asyncHandler(
+  async (req: Request, res: Response): Promise<Response> => {
+    //error handling
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) throw new BadRequestDataError('Validation Failed', errors);
+
+    await VoteService.remindUnconfirmedVotes();
+
+    return new SuccessMsgResponse(`Reminders have been sent to unconfirmed emails`).send(res);
   }
 );

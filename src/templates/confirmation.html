@@ -40,6 +40,7 @@
         text-align: center;
         margin: auto;
         margin-top: 30px;
+        margin-bottom: 10px;
         margin-left: 30px;
         outline: none;
         font-size: 18px;
@@ -47,6 +48,20 @@
         max-width: 500px;
         cursor: pointer;
         border: none;
+      }
+
+      .Mailer__btn__help-text {
+        margin-left: 30px;
+        margin-top: 20px;
+      }
+
+      .Mailer__btn--help {
+        margin-bottom: 30px;
+        margin-top: 10px;
+        margin-left: 30px;
+        display: block;
+        max-width: 500px;
+        font-size: 18px;
       }
 
       .Mailer__need-help {
@@ -76,6 +91,15 @@
 
       <a href="https://wings-award.netlify.app/confirmation/${email}/${signature}/${voteId}"
         ><button class="Mailer__btn">Confirm Your Votes</button></a
+      ><br /><br />
+
+      <span class="Mailer__btn__help-text"
+        >If you are having issues clicking the button; use the link below</span
+      >
+      <a
+        href="https://wings-award.netlify.app/confirmation/${email}/${signature}/${voteId}"
+        class="Mailer__btn--help"
+        >https://wings-award.netlify.app/confirmation/${email}/${signature}/${voteId}</a
       >
 
       <div class="Mailer__need-help">

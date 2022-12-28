@@ -42,7 +42,7 @@ class Vote {
   }
 
   public static async fetchAllVotes(): Promise<IVote[] | null> {
-    return await VoteRepo.findAll();
+    return await VoteRepo.findAll({});
   }
 
   public static async updateVote(
@@ -54,8 +54,19 @@ class Vote {
     return await VoteRepo.updateUnique(voteId, update);
   }
 
+  public static async remindUnconfirmedVotes(): Promise<void> {
+    const votes = await VoteRepo.findAll({ confirmed: false });
+    if (votes?.length === 0) throw new NotFoundError(`There are no unconfirmed votes to remind`);
+
+    if (votes) {
+      for (const vote of votes) {
+        await confirmationEmail(vote.email, vote.signature, vote._id);
+      }
+    }
+  }
+
   public static async voteAnalysis(): Promise<VoteAnalyzedInterface[]> {
-    const votes = <IVote[]>await VoteRepo.findAll();
+    const votes = <IVote[]>await VoteRepo.findAll({});
     const categories = <ICategory[]>await CategoryRepo.findAll();
 
     if (votes.length < 0) throw new NotFoundError(`There are no votes available to analyse`);

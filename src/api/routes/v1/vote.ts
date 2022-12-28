@@ -8,6 +8,7 @@ import {
   fetchVotesCtrl,
   updateVoteCtrl,
   voteAnalysisCtrl,
+  remindUnconfirmedVotesCtrl,
 } from '../../controllers/vote.controller';
 
 const router = Router();
@@ -21,5 +22,7 @@ router.route('/vote/:voteId').put(updateVoteValidator, updateVoteCtrl);
 router.route('/vote/:email/:signature').get(generalValidator, findOneVoteCtrl);
 
 router.route('/voteAnalysis').get(generalValidator, voteAnalysisCtrl);
+
+router.route('/sendReminders').post(generalValidator, remindUnconfirmedVotesCtrl);
 
 export default router;

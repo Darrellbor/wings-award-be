@@ -18,8 +18,11 @@ class VoteRepo {
       .populate('votes.nominee', 'name socialHandle');
   }
 
-  public static async findAll(): Promise<IVote[] | null> {
-    return await Vote.find()
+  public static async findAll(params: {
+    confirmed?: boolean;
+    email?: string;
+  }): Promise<IVote[] | null> {
+    return await Vote.find(params)
       .populate('votes.category', 'name')
       .populate('votes.nominee', 'name socialHandle');
   }

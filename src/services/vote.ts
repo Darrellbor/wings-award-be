@@ -54,14 +54,20 @@ class Vote {
     return await VoteRepo.updateUnique(voteId, update);
   }
 
-  public static async remindUnconfirmedVotes(): Promise<void> {
+  public static async unconfirmedVotes(sendEmails?: boolean): Promise<IVote[] | void> {
     const votes = await VoteRepo.findAll({ confirmed: false });
     if (votes?.length === 0) throw new NotFoundError(`There are no unconfirmed votes to remind`);
 
-    if (votes) {
+    if (votes && sendEmails) {
       for (const vote of votes) {
-        await confirmationEmail(vote.email, vote.signature, vote._id);
+        setTimeout(async () => {
+          await confirmationEmail(vote.email, vote.signature, vote._id);
+        }, 10000);
       }
+
+      return votes;
+    } else if (votes) {
+      return votes;
     }
   }
 

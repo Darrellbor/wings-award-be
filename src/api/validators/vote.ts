@@ -1,4 +1,4 @@
-import { body, param, header } from 'express-validator';
+import { body, query, param, header } from 'express-validator';
 import { Vote } from '../database/models/vote.model';
 
 export const createValidator = [
@@ -23,4 +23,10 @@ export const updateVoteValidator = [
   header('signature').notEmpty().withMessage('Access Denied: cannot access route!'),
   header('appKey').notEmpty().withMessage('Access Denied: cannot access route!'),
   param('voteId').notEmpty().withMessage('Vote id parameter cannot be empty!'),
+];
+
+export const unconfirmedVotesValidator = [
+  header('signature').notEmpty().withMessage('Access Denied: cannot access route!'),
+  header('appKey').notEmpty().withMessage('Access Denied: cannot access route!'),
+  query('sendReminders').optional(),
 ];

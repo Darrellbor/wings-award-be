@@ -1,14 +1,18 @@
 import { Router } from 'express';
 
 import { generalValidator } from '../../validators/general';
-import { createValidator, updateVoteValidator } from '../../validators/vote';
+import {
+  createValidator,
+  unconfirmedVotesValidator,
+  updateVoteValidator,
+} from '../../validators/vote';
 import {
   createCtrl,
   findOneVoteCtrl,
   fetchVotesCtrl,
   updateVoteCtrl,
   voteAnalysisCtrl,
-  remindUnconfirmedVotesCtrl,
+  unconfirmedVotesCtrl,
 } from '../../controllers/vote.controller';
 
 const router = Router();
@@ -23,6 +27,6 @@ router.route('/vote/:email/:signature').get(generalValidator, findOneVoteCtrl);
 
 router.route('/voteAnalysis').get(generalValidator, voteAnalysisCtrl);
 
-router.route('/sendReminders').post(generalValidator, remindUnconfirmedVotesCtrl);
+router.route('/unconfirmedVotes').post(unconfirmedVotesValidator, unconfirmedVotesCtrl);
 
 export default router;

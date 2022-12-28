@@ -1,7 +1,7 @@
 import Logger from '../core/Logger';
 import Nodemailer from '../config/nodemailer';
 import { Types } from 'mongoose';
-const { transporter, helperOptions } = Nodemailer;
+const { transporter, helperOptions, closeTransport } = Nodemailer;
 
 export const confirmationEmail = async (
   email: string,
@@ -54,7 +54,9 @@ export const confirmationEmail = async (
     } else {
       console.log(`Error occurred whilst sending email to: ${email}. Error: ${err}`);
     }
+    // closeTransport();
   } catch (err) {
     Logger.error(err);
+    // closeTransport();
   }
 };

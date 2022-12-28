@@ -25,6 +25,7 @@ export const createValidator = [
         return Promise.reject(`Please use a covenant university email to vote`);
       if (value.split('.').length > 5)
         return Promise.reject(`Please use a covenant university email to vote`);
+      if (/\d/.test(value)) return Promise.reject(`Please use a covenant university email to vote`);
       const emailExt = value.split('@');
       if (emailExt[1] !== 'stu.cu.edu.ng')
         return Promise.reject(`Please use a covenant university email to vote`);

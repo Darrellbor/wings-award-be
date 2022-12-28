@@ -27,11 +27,15 @@ interface VoteAnalyzedInterface {
 }
 
 class Vote {
-  public static async Create(vote: IVote): Promise<IVote> {
+  public static async Create(vote: IVote): Promise<Partial<IVote>> {
     const signature = uniqid('SIG_');
     const castedVote = await VoteRepo.create({ ...vote, signature });
     await confirmationEmail(vote.email, signature, castedVote._id);
-    return castedVote;
+    return {
+      _id: castedVote._id,
+      email: castedVote.email,
+      confirmed: castedVote.confirmed,
+    };
   }
 
   public static async findOneVote(params: {

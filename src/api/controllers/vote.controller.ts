@@ -14,7 +14,7 @@ export const createCtrl = asyncHandler(async (req: Request, res: Response): Prom
 
   const vote = await VoteService.Create(req.body);
 
-  return new SuccessResponse('Vote Successfully Casted!', { ...vote, signature: '' }).send(res);
+  return new SuccessResponse('Vote Successfully Casted!', vote).send(res);
 });
 
 export const findOneVoteCtrl = asyncHandler(

@@ -21,11 +21,17 @@ export const createValidator = [
     .isEmail()
     .withMessage('Email cannot be empty!')
     .custom(async (value: string) => {
+      if (value.indexOf('+') !== -1)
+        return Promise.reject(`Please use a covenant university email to vote`);
+      if (value.split('.').length > 5)
+        return Promise.reject(`Please use a covenant university email to vote`);
       const emailExt = value.split('@');
       if (emailExt[1] !== 'stu.cu.edu.ng')
         return Promise.reject(`Please use a covenant university email to vote`);
       const vote = await Vote.findOne({ email: value });
       if (vote) return Promise.reject(`${value} has already voted before!`);
+
+      return true;
     })
     .normalizeEmail(),
   body('votes.*.category').notEmpty().withMessage('Votes category cannot be empty'),

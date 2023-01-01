@@ -29,7 +29,7 @@ interface VoteAnalyzedInterface {
 class Vote {
   public static async Create(vote: IVote): Promise<Partial<IVote>> {
     const signature = uniqid('SIG_');
-    const castedVote = await VoteRepo.create({ ...vote, signature });
+    const castedVote = await VoteRepo.create({ ...vote, signature, confirmed: false });
     await confirmationEmail(vote.email, signature, castedVote._id);
     return {
       email: castedVote.email,

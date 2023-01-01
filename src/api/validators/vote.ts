@@ -37,6 +37,7 @@ export const createValidator = [
       return true;
     })
     .normalizeEmail(),
+  body('confirmed').isEmpty().withMessage('You cannot confirm a created vote'),
   body('votes.*.category').notEmpty().withMessage('Votes category cannot be empty'),
   body('votes.*.nominee').notEmpty().withMessage('Votes nominee cannot be empty'),
 ];
